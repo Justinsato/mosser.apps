@@ -96,6 +96,11 @@
 
   .app-head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s-4); margin-bottom: var(--s-4); padding-bottom: var(--s-4); border-bottom: 1px solid var(--gray-200); }
   .app-title { font-family: var(--sans); font-size: 22px; font-weight: 500; letter-spacing: 0.5px; color: var(--black); line-height: 1.2; }
+  .app-title a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.18s ease, color 0.18s ease; }
+  .app-title a:hover { color: var(--mosser-blue); border-bottom-color: var(--mosser-blue); }
+  .app-url { font-family: var(--mono); font-size: 11px; color: var(--mosser-blue); text-decoration: none; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 4px; margin-top: var(--s-2); }
+  .app-url:hover { color: var(--mosser-blue-light); }
+  .app-url::after { content: "↗"; font-size: 12px; }
   .app-tagline { font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--gray-700); line-height: 1.5; margin-bottom: var(--s-4); }
   .app-summary { font-family: var(--sans); font-size: 14px; line-height: 1.7; color: var(--gray-700); margin-bottom: var(--s-4); }
 
@@ -234,7 +239,10 @@
     <article class="app-card">
       <div class="app-label">APP 01</div>
       <div class="app-head">
-        <h2 class="app-title">Leasing — Competitor Intelligence</h2>
+        <div>
+          <h2 class="app-title"><a href="https://leasing.mosser.app" target="_blank" rel="noopener">Leasing — Competitor Intelligence</a></h2>
+          <a class="app-url" href="https://leasing.mosser.app" target="_blank" rel="noopener">leasing.mosser.app</a>
+        </div>
         <div class="badges">
           <span class="badge badge-live">Live</span>
           <span class="badge badge-mosser">Mosser Only</span>
@@ -382,15 +390,28 @@
       </div>
     </article>
 
-  </div>
+    <!-- ============ APP 5: GALLERY ============ -->
+    <article class="app-card tinted">
+      <div class="app-label">APP 05</div>
+      <div class="app-head">
+        <div>
+          <h2 class="app-title"><a href="https://gallery.app" target="_blank" rel="noopener">Gallery</a></h2>
+          <a class="app-url" href="https://gallery.app" target="_blank" rel="noopener">gallery.app</a>
+        </div>
+        <div class="badges">
+          <span class="badge badge-live">Live</span>
+          <span class="badge badge-lfi">LFI Product</span>
+        </div>
+      </div>
+      <p class="app-tagline">Property gallery — the public-facing showcase of the Mosser portfolio.</p>
+      <p class="app-summary">LFI-built property gallery that presents Mosser buildings, units, and neighborhoods in one polished, branded experience. Single source for marketing-grade visuals across the portfolio.</p>
 
-  <div class="governance">
-    <div class="governance-eyebrow">Governance</div>
-    <div class="governance-title">Ping Justin.</div>
-    <div class="governance-divider"></div>
-    <div class="governance-text">
-      Want to add someone, change something, or have an idea? Ping Justin. That's the whole governance doc.
-    </div>
+      <div class="app-foot">
+        <div class="item"><span class="label">Product</span><span class="value">LFI</span></div>
+        <div class="item"><span class="label">URL</span><span class="value">gallery.app</span></div>
+      </div>
+    </article>
+
   </div>
 
   <footer class="doc-footer">
