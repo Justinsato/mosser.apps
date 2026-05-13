@@ -1,227 +1,247 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mosser Apps</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mosser — Apps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: transparent;
-    --paper: #ffffff;
-    --ink: #0f172a;
-    --ink-2: #334155;
-    --ink-3: #64748b;
-    --line: #e2e8f0;
-    --line-2: #cbd5e1;
-    --accent: #1e3a5f;
-    --live: #0f5132;
-    --live-bg: #d1e7dd;
-    --underway: #664d03;
-    --underway-bg: #fff3cd;
-    --soon: #475569;
-    --soon-bg: #e2e8f0;
-    --exclusive: #1e3a8a;
-    --exclusive-bg: #dbeafe;
-    --shared: #5b21b6;
-    --shared-bg: #ede9fe;
+    --mosser-blue:        #0076BE;
+    --mosser-blue-light:  #009FFF;
+    --mosser-blue-dark:   #005A92;
+    --mosser-blue-deep:   #003F6B;
+    --mosser-blue-tint:   #F5FBFF;
+    --mosser-blue-soft:   #D6EAF8;
+
+    --black:    #212C32;
+    --ink:      #2A363D;
+    --gray-900: #3A464D;
+    --gray-700: #5F5D5D;
+    --gray-500: #999999;
+    --gray-300: #C3C6C8;
+    --gray-200: #EBEBEB;
+    --gray-100: #F5F5F5;
+    --white:    #FFFFFF;
+
+    --success: #009900;
+    --warning: #D69423;
+    --danger:  #BE0000;
+
+    --serif: 'Old Standard TT', Georgia, 'Times New Roman', serif;
+    --sans:  'Montserrat', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    --mono:  'JetBrains Mono', 'Courier New', monospace;
+
+    --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px;
+    --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px;
+    --s-9:96px; --s-10:128px;
+
+    --r-sm: 3px;
+    --r-md: 6px;
+
+    --shadow-2: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-3: 0 12px 32px rgba(31,82,133,0.10), 0 4px 8px rgba(0,0,0,0.04);
   }
-  * { box-sizing: border-box; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--sans);
+    background: var(--white);
     color: var(--ink);
-    background: var(--bg);
-    line-height: 1.5;
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  .wrap { max-width: 1100px; margin: 0 auto; }
-  header.page {
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 16px;
-    margin-bottom: 24px;
-  }
-  header.page h1 {
-    margin: 0 0 6px;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  header.page p {
-    margin: 0;
-    color: var(--ink-3);
-    font-size: 13px;
-  }
-  .meta-row {
-    margin-top: 12px;
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    font-size: 12px;
-    color: var(--ink-3);
-  }
-  .meta-row span strong { color: var(--ink-2); font-weight: 600; }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-  @media (max-width: 720px) {
-    .grid { grid-template-columns: 1fr; }
-  }
-  .tile {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 18px 20px;
+
+  .page { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-7); }
+
+  /* Top blue nav */
+  .doc-nav { background: var(--mosser-blue); padding: var(--s-4) 0; margin-bottom: var(--s-9); }
+  .doc-nav-inner { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-7); display: flex; align-items: center; justify-content: space-between; }
+  .doc-nav-logo { display: flex; align-items: center; gap: var(--s-3); color: var(--white); }
+  .hex-mark { width: 32px; height: 36px; flex-shrink: 0; }
+  .hex-mark svg { width: 100%; height: 100%; display: block; }
+  .doc-nav-wordmark { font-family: var(--sans); font-size: 22px; font-weight: 300; letter-spacing: 1px; color: var(--white); }
+  .doc-nav-meta { font-family: var(--sans); font-size: 12px; color: rgba(255,255,255,0.85); letter-spacing: 0.05em; }
+
+  /* Doc header */
+  .doc-header { padding-bottom: var(--s-7); border-bottom: 1px solid var(--gray-200); margin-bottom: var(--s-9); }
+  .doc-eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mosser-blue); margin-bottom: var(--s-4); }
+  .doc-title { font-family: var(--sans); font-weight: 500; font-size: clamp(40px, 6vw, 72px); line-height: 1; letter-spacing: 1px; color: var(--black); text-transform: uppercase; }
+  .doc-subtitle { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 28px; color: var(--gray-700); margin-top: var(--s-3); text-transform: lowercase; }
+  .doc-intro { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--gray-700); max-width: 780px; margin-top: var(--s-6); }
+  .doc-meta-row { display: flex; gap: var(--s-7); margin-top: var(--s-6); padding-top: var(--s-5); border-top: 1px solid var(--gray-200); flex-wrap: wrap; }
+  .doc-meta-item .label { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 4px; display: block; }
+  .doc-meta-item .value { font-family: var(--sans); font-size: 14px; color: var(--ink); font-weight: 500; }
+
+  /* App grid */
+  .app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); margin-bottom: var(--s-9); }
+  .app-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--r-md);
+    padding: var(--s-6) var(--s-6) var(--s-5);
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
-  .tile-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .tile h2 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -0.005em;
-  }
-  .tile .tagline {
-    color: var(--ink-2);
-    font-size: 13px;
-    margin: 0;
-  }
-  .tile .summary {
-    color: var(--ink-2);
-    font-size: 13px;
-    margin: 0;
-  }
-  .badges {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    flex-shrink: 0;
-  }
-  .badge {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 3px;
-    white-space: nowrap;
-    letter-spacing: 0.01em;
-  }
-  .badge.live    { color: var(--live);     background: var(--live-bg); }
-  .badge.under   { color: var(--underway); background: var(--underway-bg); }
-  .badge.soon    { color: var(--soon);     background: var(--soon-bg); }
-  .badge.excl    { color: var(--exclusive); background: var(--exclusive-bg); }
-  .badge.shared  { color: var(--shared);   background: var(--shared-bg); }
-  .tile-foot {
-    margin-top: auto;
-    padding-top: 10px;
-    border-top: 1px dashed var(--line);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    color: var(--ink-3);
-    gap: 12px;
-  }
-  .tile-foot .meta { display: flex; gap: 14px; flex-wrap: wrap; }
-  .tile-foot .meta strong { color: var(--ink-2); font-weight: 600; }
-  details.expand {
-    border-top: 1px dashed var(--line);
-    padding-top: 10px;
-    margin-top: 2px;
-  }
+  .app-card:hover { box-shadow: var(--shadow-2); }
+  .app-card.tinted { background: var(--mosser-blue-tint); border-color: var(--mosser-blue-soft); }
+  .app-label { position: absolute; top: var(--s-3); right: var(--s-4); font-family: var(--mono); font-size: 10px; color: var(--gray-500); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .app-head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s-4); margin-bottom: var(--s-4); padding-bottom: var(--s-4); border-bottom: 1px solid var(--gray-200); }
+  .app-title { font-family: var(--sans); font-size: 22px; font-weight: 500; letter-spacing: 0.5px; color: var(--black); line-height: 1.2; }
+  .app-tagline { font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--gray-700); line-height: 1.5; margin-bottom: var(--s-4); }
+  .app-summary { font-family: var(--sans); font-size: 14px; line-height: 1.7; color: var(--gray-700); margin-bottom: var(--s-4); }
+
+  /* Badges */
+  .badges { display: flex; gap: var(--s-2); flex-wrap: wrap; flex-shrink: 0; }
+  .badge { display: inline-flex; align-items: center; padding: 4px var(--s-3); font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: var(--r-sm); border: 1px solid; white-space: nowrap; }
+  .badge-live      { background: rgba(0,153,0,0.1);   color: var(--success); border-color: rgba(0,153,0,0.3); }
+  .badge-underway  { background: rgba(214,148,35,0.1); color: var(--warning); border-color: rgba(214,148,35,0.3); }
+  .badge-soon      { background: var(--gray-100); color: var(--gray-700); border-color: var(--gray-200); }
+  .badge-mosser    { background: var(--mosser-blue); color: var(--white); border-color: var(--mosser-blue); }
+  .badge-lfi       { background: var(--mosser-blue-tint); color: var(--mosser-blue-deep); border-color: var(--mosser-blue-soft); }
+
+  /* Details disclosure */
+  details.expand { margin-top: auto; border-top: 1px dashed var(--gray-200); padding-top: var(--s-4); }
   details.expand > summary {
     cursor: pointer;
-    font-size: 12px;
-    color: var(--accent);
-    font-weight: 500;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mosser-blue);
     list-style: none;
     user-select: none;
+    transition: color 0.18s ease;
   }
+  details.expand > summary:hover { color: var(--mosser-blue-light); }
   details.expand > summary::-webkit-details-marker { display: none; }
   details.expand > summary::before {
-    content: "▸";
+    content: "›";
     display: inline-block;
-    margin-right: 6px;
-    transition: transform 0.15s;
+    margin-right: var(--s-2);
+    transition: transform 0.18s ease;
+    font-weight: 400;
+    font-size: 14px;
   }
   details.expand[open] > summary::before { transform: rotate(90deg); }
-  details.expand .body {
-    margin-top: 10px;
-    font-size: 13px;
-    color: var(--ink-2);
-  }
-  details.expand .body h3 {
-    margin: 12px 0 4px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  details.expand .body ul { margin: 4px 0 0 18px; padding: 0; }
-  details.expand .body li { margin: 2px 0; }
+  details.expand .body { margin-top: var(--s-4); font-size: 14px; color: var(--gray-700); line-height: 1.7; }
+  details.expand .body h3 { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mosser-blue); margin: var(--s-5) 0 var(--s-2); }
+  details.expand .body h3:first-child { margin-top: 0; }
+  details.expand .body p { margin-bottom: var(--s-2); }
+  details.expand .body ul { margin: var(--s-2) 0 0 var(--s-5); padding: 0; }
+  details.expand .body li { margin: 4px 0; }
   details.expand .body .stack {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: var(--mono);
     font-size: 12px;
-    color: var(--ink-3);
-    background: #f8fafc;
-    padding: 6px 8px;
-    border-radius: 4px;
-    margin-top: 4px;
+    color: var(--gray-900);
+    background: var(--gray-100);
+    border-left: 2px solid var(--mosser-blue);
+    padding: var(--s-3) var(--s-4);
+    border-radius: var(--r-sm);
+    margin-top: var(--s-2);
+    line-height: 1.6;
   }
-  .access-note {
-    margin-top: 28px;
-    padding: 14px 18px;
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--accent);
-    border-radius: 4px;
-    background: #f8fafc;
-    font-size: 12px;
-    color: var(--ink-2);
-  }
-  .access-note strong { color: var(--ink); }
-  .live-data {
-    color: var(--ink-3);
+
+  .app-foot {
+    margin-top: var(--s-4);
+    padding-top: var(--s-4);
+    border-top: 1px solid var(--gray-200);
+    display: flex;
+    gap: var(--s-6);
+    flex-wrap: wrap;
+    font-family: var(--mono);
     font-size: 11px;
-    font-style: italic;
+    color: var(--gray-500);
   }
-  .live-data .val { font-style: normal; color: var(--ink-2); font-weight: 500; }
+  .app-foot .item .label { display: block; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 2px; }
+  .app-foot .item .value { font-family: var(--mono); font-size: 12px; color: var(--ink); font-weight: 500; letter-spacing: 0.02em; }
+
+  .live-data { font-family: var(--mono); font-size: 11px; color: var(--gray-500); letter-spacing: 0.02em; margin-top: var(--s-2); }
+  .live-data .val { color: var(--mosser-blue-deep); font-weight: 500; }
+
+  /* Governance band */
+  .governance {
+    background: var(--mosser-blue);
+    color: var(--white);
+    padding: var(--s-7);
+    border-radius: var(--r-md);
+    text-align: center;
+    margin-bottom: var(--s-9);
+  }
+  .governance-eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); margin-bottom: var(--s-3); opacity: 0.85; }
+  .governance-title { font-family: var(--sans); font-size: 24px; font-weight: 500; letter-spacing: 0.5px; color: var(--white); margin-bottom: var(--s-3); text-transform: uppercase; }
+  .governance-divider { width: 60px; height: 1px; background: rgba(255,255,255,0.4); margin: 0 auto var(--s-4); }
+  .governance-text { font-family: var(--serif); font-style: italic; font-size: 18px; color: rgba(255,255,255,0.95); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+  /* Footer */
+  .doc-footer { border-top: 1px solid var(--gray-200); padding: var(--s-5) 0; margin-top: var(--s-7); display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--gray-500); letter-spacing: 0.05em; }
+
+  @media (max-width: 900px) {
+    .page { padding: 0 var(--s-5); }
+    .doc-nav-inner { padding: 0 var(--s-5); }
+    .doc-nav-meta { display: none; }
+    .doc-meta-row { flex-direction: column; gap: var(--s-3); }
+    .app-grid { grid-template-columns: 1fr; }
+    .app-head { flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<div class="doc-nav">
+  <div class="doc-nav-inner">
+    <div class="doc-nav-logo">
+      <div class="hex-mark">
+        <svg viewBox="0 0 32 36" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="16,1 30,9 30,27 16,35 2,27 2,9" fill="none" stroke="white" stroke-width="1.5"/>
+          <text x="16" y="22" text-anchor="middle" fill="white" font-family="Montserrat, sans-serif" font-weight="700" font-size="11">M</text>
+        </svg>
+      </div>
+      <span class="doc-nav-wordmark">MOSSER</span>
+    </div>
+    <div class="doc-nav-meta">APPS · INTERNAL TOOLING · v1.0</div>
+  </div>
+</div>
 
-  <header class="page">
-    <h1>Mosser Apps</h1>
-    <p>Tools we've built for the Mosser portfolio, plus a few LFI products Mosser has a seat on. Have at it.</p>
-    <div class="meta-row">
-      <span><strong>Portfolio:</strong> ~2,561 units · 20 SF properties</span>
-      <span><strong>Owner:</strong> Justin / LFI</span>
-      <span><strong>Last updated:</strong> <span id="last-updated">2026-05-11</span></span>
+<div class="page">
+
+  <header class="doc-header">
+    <div class="doc-eyebrow">Internal Tooling</div>
+    <h1 class="doc-title">Mosser Apps</h1>
+    <p class="doc-subtitle">tools built for the portfolio</p>
+    <p class="doc-intro">
+      Tools we've built for the Mosser portfolio, plus a few LFI products Mosser has a seat on. Have at it.
+    </p>
+    <div class="doc-meta-row">
+      <div class="doc-meta-item"><span class="label">Portfolio</span><span class="value">~2,561 units · 20 SF properties</span></div>
+      <div class="doc-meta-item"><span class="label">Owner</span><span class="value">Justin / LFI</span></div>
+      <div class="doc-meta-item"><span class="label">Last Updated</span><span class="value" id="last-updated">2026-05-11</span></div>
     </div>
   </header>
 
-  <div class="grid">
+  <div class="app-grid">
 
-    <!-- ============ TILE 1: LEASING ============ -->
-    <article class="tile">
-      <div class="tile-head">
-        <h2>Leasing — Competitor Intelligence</h2>
+    <!-- ============ APP 1: LEASING ============ -->
+    <article class="app-card">
+      <div class="app-label">APP 01</div>
+      <div class="app-head">
+        <h2 class="app-title">Leasing — Competitor Intelligence</h2>
         <div class="badges">
-          <span class="badge live">LIVE</span>
-          <span class="badge excl">MOSSER ONLY</span>
+          <span class="badge badge-live">Live</span>
+          <span class="badge badge-mosser">Mosser Only</span>
         </div>
       </div>
-      <p class="tagline">Daily-refreshing intelligence on every SF multifamily competitor listing — rents, concessions, days-on-market, removals.</p>
-      <p class="summary">Scrapes eight SF competitor operators across AppFolio, Yardi RentCafe, and custom platforms, plus a Craigslist SF filter. Full Type 2 change history. Anonymous CL posts attributed back to operators via editable fingerprint dictionary.</p>
+      <p class="app-tagline">Daily-refreshing intelligence on every SF multifamily competitor listing — rents, concessions, days-on-market, removals.</p>
+      <p class="app-summary">Scrapes eight SF competitor operators across AppFolio, Yardi RentCafe, and custom platforms, plus a Craigslist SF filter. Full Type 2 change history. Anonymous CL posts attributed back to operators via editable fingerprint dictionary.</p>
 
       <details class="expand">
         <summary>View details</summary>
@@ -240,29 +260,28 @@
           <div class="stack">Neon Postgres 15 · Cloudflare R2 · Next.js 14 on Vercel · Python ETL (HTTP + Playwright) · GitHub Actions cron 6am PT</div>
           <h3>Live stats</h3>
           <p class="live-data">Last scrape run: <span class="val" data-live="leasing-last-run">—</span> · Active listings: <span class="val" data-live="leasing-active-count">—</span> · CL ads (7d): <span class="val" data-live="leasing-cl-7d">—</span></p>
-          <p class="live-data" style="margin-top:6px;">Values fill in once the chat is wired into this app.</p>
+          <p class="live-data" style="margin-top:6px; font-style: italic; font-family: var(--serif);">Values fill in once the chat is wired into this app.</p>
         </div>
       </details>
 
-      <div class="tile-foot">
-        <div class="meta">
-          <span><strong>Repo:</strong> 04-mosser.apps/leasing</span>
-          <span><strong>Refresh:</strong> Daily 6am PT</span>
-        </div>
+      <div class="app-foot">
+        <div class="item"><span class="label">Repo</span><span class="value">04-mosser.apps/leasing</span></div>
+        <div class="item"><span class="label">Refresh</span><span class="value">Daily 6am PT</span></div>
       </div>
     </article>
 
-    <!-- ============ TILE 2: PRICING & RM ============ -->
-    <article class="tile">
-      <div class="tile-head">
-        <h2>Pricing and Revenue Management</h2>
+    <!-- ============ APP 2: PRICING & RM ============ -->
+    <article class="app-card">
+      <div class="app-label">APP 02</div>
+      <div class="app-head">
+        <h2 class="app-title">Pricing and Revenue Management</h2>
         <div class="badges">
-          <span class="badge under">UNDERWAY</span>
-          <span class="badge excl">MOSSER ONLY</span>
+          <span class="badge badge-underway">Underway</span>
+          <span class="badge badge-mosser">Mosser Only</span>
         </div>
       </div>
-      <p class="tagline">Supports the leasing team in setting rents — balancing restrictive covenants and reporting requirements while keeping value creation the goal.</p>
-      <p class="summary">Sits next to leasing. Combines Mosser's own data with public market signal, respects every bound we operate under (AGA, banking rules, lender covenants, reporting), and surfaces rent recommendations built for long-term asset value — not just next month's collection.</p>
+      <p class="app-tagline">Supports the leasing team in setting rents — balancing restrictive covenants and reporting requirements while keeping value creation the goal.</p>
+      <p class="app-summary">Sits next to leasing. Combines Mosser's own data with public market signal, respects every bound we operate under (AGA, banking rules, lender covenants, reporting), and surfaces rent recommendations built for long-term asset value — not just next month's collection.</p>
 
       <details class="expand">
         <summary>View details</summary>
@@ -285,25 +304,24 @@
         </div>
       </details>
 
-      <div class="tile-foot">
-        <div class="meta">
-          <span><strong>Repo:</strong> 04-mosser.apps/pricing</span>
-          <span><strong>ETA:</strong> ~10 working days from kickoff</span>
-        </div>
+      <div class="app-foot">
+        <div class="item"><span class="label">Repo</span><span class="value">04-mosser.apps/pricing</span></div>
+        <div class="item"><span class="label">ETA</span><span class="value">~10 working days from kickoff</span></div>
       </div>
     </article>
 
-    <!-- ============ TILE 3: BRICKSTON ============ -->
-    <article class="tile">
-      <div class="tile-head">
-        <h2>Brickston</h2>
+    <!-- ============ APP 3: BRICKSTON ============ -->
+    <article class="app-card tinted">
+      <div class="app-label">APP 03</div>
+      <div class="app-head">
+        <h2 class="app-title">Brickston</h2>
         <div class="badges">
-          <span class="badge live">LIVE</span>
-          <span class="badge shared">LFI PRODUCT · MOSSER-ONLY ENV</span>
+          <span class="badge badge-live">Live</span>
+          <span class="badge badge-lfi">LFI Product · Mosser-Only Env</span>
         </div>
       </div>
-      <p class="tagline">AI-enabled asset management. Scales AUM by focusing AMs on what creates value and what flags risk.</p>
-      <p class="summary">LFI flagship product, running in a dedicated Mosser-only environment. Ingests M365, Granola, Smartsheet, Teams, and Brickston Cloud SQL event triggers; extracts tasks, commitments, decisions, and entities resolved to property and resident.</p>
+      <p class="app-tagline">AI-enabled asset management. Scales AUM by focusing AMs on what creates value and what flags risk.</p>
+      <p class="app-summary">LFI flagship product, running in a dedicated Mosser-only environment. Ingests M365, Granola, Smartsheet, Teams, and Brickston Cloud SQL event triggers; extracts tasks, commitments, decisions, and entities resolved to property and resident.</p>
 
       <details class="expand">
         <summary>View details</summary>
@@ -323,25 +341,24 @@
         </div>
       </details>
 
-      <div class="tile-foot">
-        <div class="meta">
-          <span><strong>Product:</strong> LFI</span>
-          <span><strong>Environment:</strong> Mosser-only</span>
-        </div>
+      <div class="app-foot">
+        <div class="item"><span class="label">Product</span><span class="value">LFI</span></div>
+        <div class="item"><span class="label">Environment</span><span class="value">Mosser-only</span></div>
       </div>
     </article>
 
-    <!-- ============ TILE 4: REPAIRCO ============ -->
-    <article class="tile">
-      <div class="tile-head">
-        <h2>RepairCo</h2>
+    <!-- ============ APP 4: REPAIRCO ============ -->
+    <article class="app-card">
+      <div class="app-label">APP 04</div>
+      <div class="app-head">
+        <h2 class="app-title">RepairCo</h2>
         <div class="badges">
-          <span class="badge soon">COMING SOON</span>
-          <span class="badge excl">MOSSER ONLY</span>
+          <span class="badge badge-soon">Coming Soon</span>
+          <span class="badge badge-mosser">Mosser Only</span>
         </div>
       </div>
-      <p class="tagline">KPI and performance engine for our newest venture — keeps the business plan honest and the P&amp;L on track.</p>
-      <p class="summary">Built to make sure RepairCo hits its numbers. Pipes operating data into KPI dashboards mapped to the business plan, flags variances early, and keeps the venture accountable to its profitability targets before issues show up in the financials.</p>
+      <p class="app-tagline">KPI and performance engine for our newest venture — keeps the business plan honest and the P&amp;L on track.</p>
+      <p class="app-summary">Built to make sure RepairCo hits its numbers. Pipes operating data into KPI dashboards mapped to the business plan, flags variances early, and keeps the venture accountable to its profitability targets before issues show up in the financials.</p>
 
       <details class="expand">
         <summary>View details</summary>
@@ -359,19 +376,27 @@
         </div>
       </details>
 
-      <div class="tile-foot">
-        <div class="meta">
-          <span><strong>Target launch:</strong> TBD</span>
-          <span><strong>Audience:</strong> RepairCo leadership + Mosser AM</span>
-        </div>
+      <div class="app-foot">
+        <div class="item"><span class="label">Target Launch</span><span class="value">TBD</span></div>
+        <div class="item"><span class="label">Audience</span><span class="value">RepairCo leadership + Mosser AM</span></div>
       </div>
     </article>
 
   </div>
 
-  <div class="access-note">
-    Want to add someone, change something, or have an idea? Ping Justin. That's the whole governance doc.
+  <div class="governance">
+    <div class="governance-eyebrow">Governance</div>
+    <div class="governance-title">Ping Justin.</div>
+    <div class="governance-divider"></div>
+    <div class="governance-text">
+      Want to add someone, change something, or have an idea? Ping Justin. That's the whole governance doc.
+    </div>
   </div>
+
+  <footer class="doc-footer">
+    <div>MOSSER · APPS · 2026</div>
+    <div>Internal use · Not for distribution</div>
+  </footer>
 
 </div>
 
@@ -380,7 +405,6 @@
   // and the leasing / pricing / Brickston apps expose MCP tools, replace the body
   // of refreshLiveData() with calls to window.cowork.callMcpTool(...).
   async function refreshLiveData() {
-    // Example for when Leasing exposes an MCP:
     // const stats = await window.cowork.callMcpTool('leasing_stats', {});
     // document.querySelector('[data-live="leasing-last-run"]').textContent = stats.last_run;
     // document.querySelector('[data-live="leasing-active-count"]').textContent = stats.active_listings;
